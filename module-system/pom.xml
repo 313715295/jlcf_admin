@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>base-admin</artifactId>
+        <groupId>com.admin</groupId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>module-system</artifactId>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.admin</groupId>
+            <artifactId>admin-commons</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!--阿里云OSS上传-->
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>2.8.2</version>
+        </dependency>
+
+        <!-- 七牛JAR -->
+        <dependency>
+            <groupId>com.qiniu</groupId>
+            <artifactId>qiniu-java-sdk</artifactId>
+            <version>[7.2.0, 7.2.99]</version>
+        </dependency>
+
+        <!--网页抓取-->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.11.2</version>
+        </dependency>
+
+        <!--定时任务-->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.mchange</groupId>
+                    <artifactId>c3p0</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--工具类-->
+        <dependency>
+            <groupId>com.xiaoleilu</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
+
+        <!--对分词索引查询解析-->
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-queryparser</artifactId>
+        </dependency>
+
+        <!--高亮 -->
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-highlighter</artifactId>
+        </dependency>
+
+        <!--smartcn 中文分词器 SmartChineseAnalyzer  smartcn分词器 需要lucene依赖 且和lucene版本同步-->
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers-smartcn</artifactId>
+        </dependency>
+
+        <!--ik-analyzer 中文分词器-->
+        <dependency>
+            <groupId>cn.bestwu</groupId>
+            <artifactId>ik-analyzers</artifactId>
+        </dependency>
+
+        <!--MMSeg4j 分词器-->
+        <dependency>
+            <groupId>com.chenlb.mmseg4j</groupId>
+            <artifactId>mmseg4j-solr</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.solr</groupId>
+                    <artifactId>solr-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+    </dependencies>
+</project>
