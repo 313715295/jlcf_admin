@@ -9,7 +9,10 @@ import java.util.Properties;
 @Data
 @Accessors(chain = true)
 public class SiteVO {
-
+    /**
+     * id
+     */
+    private Long id;
 
     /**
      * 网站名称

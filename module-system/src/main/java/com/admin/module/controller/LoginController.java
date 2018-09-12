@@ -2,19 +2,14 @@ package com.admin.module.controller;
 
 
 import com.admin.commons.annotation.SysLog;
-import com.admin.commons.base.BaseEntity;
-import com.admin.commons.base.Result;
 import com.admin.module.controller.base.ShiroController;
 
 import com.admin.module.entity.Menu;
 import com.admin.module.entity.User;
-import com.admin.module.shiro.JWTToken;
-import com.admin.module.shiro.JwtTokenUtil;
 import com.admin.module.shiro.MySysUser;
-import com.admin.module.utils.Constants;
+import com.admin.commons.utils.Constants;
 import com.admin.commons.utils.RestResponse;
-import com.admin.module.utils.VerifyCodeUtil;
-import com.alibaba.fastjson.JSONObject;
+import com.admin.commons.utils.VerifyCodeUtil;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;

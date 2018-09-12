@@ -35,28 +35,14 @@
         </thead>
         <tbody>
         <tr>
-            <td>网站名称</td>
-            <td><input type="text" class="layui-input cmsName" name="name" value="${site.name}" lay-verify="required" placeholder="请输入网站名称"></td>
+            <td>平台名称</td>
+            <td><input type="text" class="layui-input cmsName" name="name" value="${site.name}" lay-verify="required" placeholder="请输入平台名称"></td>
             <td>name</td>
         </tr>
         <tr>
-            <td>网站地址</td>
-            <td><input type="text" class="layui-input cmsName" name="url" value="${site.url}" lay-verify="required" placeholder="请输入网站地址"></td>
+            <td>官方网站</td>
+            <td><input type="text" class="layui-input cmsName" name="url" value="${site.url}" lay-verify="required" placeholder="请输入官方网站"></td>
             <td>url</td>
-        </tr>
-        <tr>
-            <td>是否开放留言</td>
-            <td>
-                <input type="checkbox" <#if (site.openMessage == true)>checked=""</#if> name="openMessage" lay-skin="switch"  lay-text="打开|关闭">
-            </td>
-            <td>openMessage</td>
-        </tr>
-        <tr>
-            <td>是否可以匿名留言</td>
-            <td>
-                <input type="checkbox" <#if (site.noName == true)>checked=""</#if> name="noName" lay-skin="switch"  lay-text="可以|不可">
-            </td>
-            <td>noName</td>
         </tr>
         <tr>
             <td>当前版本</td>
@@ -64,61 +50,28 @@
             <td>version</td>
         </tr>
         <tr>
-            <td>开发作者</td>
-            <td><input type="text" class="layui-input author" name="author" value="${site.author}" placeholder="请输入开发作者"></td>
-            <td>author</td>
-        </tr>
-        <tr>
-            <td>作者头像</td>
-            <td>
-                <input type="hidden" class="layui-input author" name="authorIcon" value="${site.authorIcon}">
-                <button type="button" class="layui-btn layui-btn-normal" id="test2"><i class="layui-icon"></i>上传一个照片什么的</button>
-                <img <#if site.authorIcon??> src="${site.authorIcon}" <#else> src="${base}/static/images/face.jpg " </#if> class="layui-circle" id="userFace" style="width: 100px;height: 100px">
-            </td>
-            <td>authorIcon</td>
-        </tr>
-        <tr>
-            <td>文件上传方式</td>
-            <td>
-                <input type="radio" name="fileUploadType" value="local" title="本地上传" <#if (site.fileUploadType == "local") >checked=""</#if>   >
-                <input type="radio" name="fileUploadType" value="qiniu" title="七牛云存储" lay-filter="qiniuUpload" <#if (site.fileUploadType == "qiniu") >checked=""</#if>>
-                <input type="radio" name="fileUploadType" value="oss" title="阿里云存储" lay-filter="ossUpload" <#if (site.fileUploadType == "oss") >checked=""</#if>>
-            </td>
-            <td>fileUploadType</td>
-        </tr>
-        <tr>
-            <td>微博</td>
-            <td><input type="text" class="layui-input author" name="weibo" value="${site.weibo}" placeholder="请输入微博地址"></td>
+            <td>官方微博</td>
+            <td><input type="text" class="layui-input author" name="weibo" value="${site.weibo}" placeholder="请输入官方微博地址"></td>
             <td>weibo</td>
         </tr>
         <tr>
-            <td>QQ</td>
-            <td><input type="text" class="layui-input author" name="qq" value="${site.qq}" placeholder="请输入QQ号"></td>
+            <td>客服QQ群号</td>
+            <td><input type="text" class="layui-input author" name="qq" value="${site.qq}" placeholder="请输入客服QQ群号"></td>
             <td>qq</td>
         </tr>
         <tr>
-            <td>git</td>
-            <td><input type="text" class="layui-input author" name="git" value="${site.git}" placeholder="请输入码云地址"></td>
-            <td>git</td>
-        </tr>
-        <tr>
-            <td>github</td>
-            <td><input type="text" class="layui-input author" name="github" value="${site.github}" placeholder="请输入github地址"></td>
-            <td>github</td>
-        </tr>
-        <tr>
-            <td>手机</td>
-            <td><input type="number" class="layui-input homePage" name="phone" value="${site.phone}" lay-verify="phone" placeholder="请输入手机号码"></td>
+            <td>客服热线</td>
+            <td><input type="number" class="layui-input homePage" name="phone" value="${site.phone}"  placeholder="请输入客服热线"></td>
             <td>phone</td>
         </tr>
         <tr>
-            <td>邮箱</td>
-            <td><input type="text" class="layui-input" name="email" value="${site.email}" lay-verify="email" placeholder="请输入邮箱"></td>
+            <td>客服邮箱</td>
+            <td><input type="text" class="layui-input" name="email" value="${site.email}" lay-verify="email" placeholder="请输入客服邮箱"></td>
             <td>email</td>
         </tr>
         <tr>
-            <td>地址</td>
-            <td><input type="text" class="layui-input author" name="address" value="${site.address}" placeholder="请输入地址"></td>
+            <td>公司地址</td>
+            <td><input type="text" class="layui-input author" name="address" value="${site.address}" placeholder="请输入公司地址"></td>
             <td>address</td>
         </tr>
         <tr>
@@ -136,29 +89,9 @@
             <td>logo</td>
         </tr>
         <tr>
-            <td>服务器环境</td>
-            <td><input type="text" class="layui-input server layui-disabled" name="server" disabled value="${site.server}" placeholder="请输入服务器环境"></td>
-            <td>server</td>
-        </tr>
-        <tr>
-            <td>数据库版本</td>
-            <td><input type="text" class="layui-input dataBase layui-disabled" name="database" disabled value="${site.database}" placeholder="请输入数据库版本"></td>
-            <td>database</td>
-        </tr>
-        <tr>
-            <td>最大上传限制</td>
-            <td><input type="number" class="layui-input maxUpload" name="maxUpload" lay-verify="number" value="${site.maxUpload}" placeholder="请输入最大上传限制"></td>
-            <td>maxUpload</td>
-        </tr>
-        <tr>
-            <td>默认关键字</td>
-            <td><input type="text" class="layui-input keywords" name="keywords" value="${site.keywords}" placeholder="请输入默认关键字"></td>
-            <td>keywords</td>
-        </tr>
-        <tr>
-            <td>网站描述</td>
-            <td><textarea placeholder="请输入网站描述" name="description"  class="layui-textarea description">${site.description}</textarea></td>
-            <td>description</td>
+            <td>数据库信息</td>
+            <td><input type="text" class="layui-input dataBase" name="database" value="${site.database}" placeholder="请输入数据库版本"></td>
+            <td>IDatabase</td>
         </tr>
         <tr>
             <td>版权信息</td>
@@ -171,9 +104,24 @@
             <td>record</td>
         </tr>
         <tr>
-            <td>个人简介</td>
-            <td><div id="content">${site.remarks}</div></td>
-            <td>remarks</td>
+            <td>ICP许可证号</td>
+            <td><input type="text" class="layui-input ICPInfo" name="ICPInfo" value="${site.ICPInfo}" placeholder="请输入ICP许可证号"></td>
+            <td>ICPInfo</td>
+        </tr>
+        <tr>
+            <td>公安机关备案号</td>
+            <td><input type="text" class="layui-input agencyRecord" name="agencyRecord" value="${site.agencyRecord}" placeholder="请输入公安机关备案号"></td>
+            <td>agencyRecord</td>
+        </tr>
+        <tr>
+            <td>默认关键字</td>
+            <td><input type="text" class="layui-input keywords" name="keywords" value="${site.keywords}" placeholder="请输入默认关键字"></td>
+            <td>keywords</td>
+        </tr>
+        <tr>
+            <td>网站描述</td>
+            <td><div id="content">${site.description}</div></td>
+            <td>description</td>
         </tr>
         </tbody>
     </table>
@@ -285,45 +233,13 @@
             }
         });
 
-        form.on('radio(qiniuUpload)', function(data){
-            layer.open({
-                title : "七牛云信息",
-                type : 2,
-                content : "${base}/admin/system/site/qiniu",
-                area: ['600px','550px'],
-                cancel:function (index, layero) {
-                    console.log(layero);
-                }
-            });
-        });
-
-        form.on('radio(ossUpload)', function(data){
-            layer.open({
-                title : "阿里云信息",
-                type : 2,
-                content : "${base}/admin/system/site/oss",
-                area: ['600px','600px']
-            });
-        });
 
         form.on('submit(site)',function(data){
             var c = content_editor.txt.html();
             if(null != c || "" !== c || undefined !== c){
                 c = c.replace(/\"/g, "'");
-                data.field.remarks = c;
+                data.field.description = c;
             }
-
-            if(null == data.field.openMessage || undefined === data.field.openMessage || "" === data.field.openMessage){
-                data.field.openMessage = false;
-            }else{
-                data.field.openMessage = true;
-            }
-            if(null == data.field.noName || undefined === data.field.noName || "" === data.field.noName){
-                data.field.noName = false;
-            }else{
-                data.field.noName = true;
-            }
-
 
             var loadIndex = layer.load(2, {
                 shade: [0.3, '#333']

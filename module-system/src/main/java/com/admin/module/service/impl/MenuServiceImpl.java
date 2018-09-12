@@ -86,7 +86,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuDao, Menu> implements MenuS
     /**
      * 递归拉取菜单树的数据
      */
-    private  List<ZtreeVO> getZTree(ZtreeVO tree,List<Menu> total,List<ZtreeVO> result){
+    private  List<ZtreeVO> getZTree(ZtreeVO tree, List<Menu> total, List<ZtreeVO> result){
         Long pid = tree == null?null:tree.getId();
         List<ZtreeVO> childList = Lists.newArrayList();
         for (Menu m : total){

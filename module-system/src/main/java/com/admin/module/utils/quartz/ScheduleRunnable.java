@@ -2,7 +2,7 @@ package com.admin.module.utils.quartz;
 
 
 import com.admin.commons.exceptions.MyException;
-import com.admin.module.utils.SpringUtil;
+import com.admin.commons.utils.SpringUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.ReflectionUtils;
 

@@ -2,7 +2,7 @@ package com.admin.module.utils.quartz;
 
 import com.admin.module.entity.QuartzTask;
 import com.admin.commons.exceptions.MyException;
-import com.admin.module.utils.Constants;
+import com.admin.commons.utils.Constants;
 import org.quartz.*;
 
 

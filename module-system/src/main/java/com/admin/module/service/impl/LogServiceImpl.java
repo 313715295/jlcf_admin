@@ -33,7 +33,7 @@ public class LogServiceImpl extends ServiceImpl<LogDao, Log> implements LogServi
         //补全数据库中不存在的日期，订单数为0
         List<String> dayList = Lists.newArrayList();
         for (int i=-14;i<=0;i++){
-            DateTime  dateTime = DateUtil.offsetDay(new Date(),i);
+            DateTime dateTime = DateUtil.offsetDay(new Date(),i);
             dayList.add(dateTime.toString("yyyy-MM-dd"));
         }
         List<Integer> pv = Lists.newArrayList();

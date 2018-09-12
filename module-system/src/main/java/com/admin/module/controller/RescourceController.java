@@ -4,8 +4,7 @@ package com.admin.module.controller;
 import com.admin.commons.annotation.SysLog;
 import com.admin.module.controller.base.ShiroController;
 import com.admin.module.entity.Rescource;
-import com.admin.module.utils.LayerData;
-import com.admin.module.utils.QiniuFileUtil;
+import com.admin.commons.utils.LayerData;
 import com.admin.commons.utils.RestResponse;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -76,7 +75,7 @@ public class RescourceController extends ShiroController{
             return RestResponse.failure("请求参数不正确");
         }
         for (Rescource rescource : rescources){
-            QiniuFileUtil.deleteQiniuP(rescource.getWebUrl());
+//            QiniuFileUtil.deleteQiniuP(rescource.getWebUrl()); todo 待修改
         }
         rescourceService.removeByIds(ids);
         return RestResponse.success();

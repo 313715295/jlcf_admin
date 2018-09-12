@@ -27,8 +27,7 @@ public class ShiroController extends BaseController {
     @Autowired
     protected RescourceService rescourceService;
 
-    @Autowired
-    protected TableService tableService;
+
 
     @Autowired
     protected SiteService siteService;
@@ -36,17 +35,9 @@ public class ShiroController extends BaseController {
     @Autowired
     protected LogService logService;
 
-    @Autowired
-    protected BlogArticleService blogArticleService;
 
-    @Autowired
-    protected BlogChannelService blogChannelService;
 
-    @Autowired
-    protected BlogCommentService blogCommentService;
 
-    @Autowired
-    protected BlogTagsService blogTagsService;
 
     @Autowired
     protected QuartzTaskService quartzTaskService;

@@ -1,9 +1,7 @@
 package com.admin.module.service.impl;
 
 
-import com.admin.commons.base.BaseEntity;
 import com.admin.module.dao.UserDao;
-import com.admin.module.entity.Menu;
 import com.admin.module.entity.Role;
 import com.admin.module.entity.User;
 import com.admin.module.service.UserService;
@@ -18,7 +16,6 @@ import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 

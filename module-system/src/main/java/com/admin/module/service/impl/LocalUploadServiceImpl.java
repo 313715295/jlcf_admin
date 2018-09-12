@@ -1,12 +1,13 @@
 package com.admin.module.service.impl;
 
 
+import com.admin.commons.config.FileStorage;
+import com.admin.commons.exceptions.MyException;
+import com.admin.commons.utils.RestResponse;
 import com.admin.module.entity.Rescource;
 import com.admin.module.entity.UploadInfo;
-import com.admin.commons.exceptions.MyException;
 import com.admin.module.service.UploadService;
-import com.admin.module.utils.QETag;
-import com.admin.commons.utils.RestResponse;
+import com.admin.commons.utils.QETag;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.xiaoleilu.hutool.util.RandomUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -19,6 +20,8 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service("localService")
@@ -40,17 +43,26 @@ public class LocalUploadServiceImpl implements UploadService {
                 file.getOriginalFilename().lastIndexOf("."));
         String fileName = UUID.randomUUID() + extName;
         String contentType = file.getContentType();
-        StringBuffer sb = new StringBuffer(ResourceUtils.getURL("classpath:").getPath());
-        String filePath = sb.append("static/upload/").toString();
-        File targetFile = new File(filePath);
-        if(!targetFile.exists()){
-            targetFile.mkdirs();
+
+        String filePath = FileStorage.getUploadImageDir();
+        String webUrl = FileStorage.getImageStorage()+fileName;
+
+        List<String> filePaths = new ArrayList<>();
+        filePaths.add(filePath);
+        if (!webUrl.contains("http:")) {
+            //如果图片不是存储在图片服务器上，还需要再classpath下复制下
+            filePaths.add(ResourceUtils.getURL("classpath:").getPath() + FileStorage.getImageStorage());
         }
-        FileOutputStream out = new FileOutputStream(filePath+fileName);
-        out.write(data);
-        out.flush();
-        out.close();
-        String webUrl = "/static/upload/"+fileName;
+        for (String path:filePaths) {
+            File targetFile = new File(path);
+            if(!targetFile.exists()){
+                targetFile.mkdirs();
+            }
+            FileOutputStream out = new FileOutputStream(path+fileName);
+            out.write(data);
+            out.flush();
+            out.close();
+        }
         rescource = new Rescource();
         rescource.setFileName(fileName);
         rescource.setFileSize(new java.text.DecimalFormat("#.##").format(file.getSize()/1024)+"kb");

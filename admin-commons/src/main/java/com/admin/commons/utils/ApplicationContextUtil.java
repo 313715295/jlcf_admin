@@ -1,5 +1,6 @@
 package com.admin.commons.utils;
 
+import com.admin.commons.config.FileStorage;
 import lombok.Synchronized;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

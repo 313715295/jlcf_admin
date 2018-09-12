@@ -1,5 +1,8 @@
 package com.admin.module.utils;
 
+import com.admin.commons.utils.Constants;
+import com.admin.commons.utils.Digests;
+import com.admin.commons.utils.Encodes;
 import com.admin.module.entity.User;
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Maps;

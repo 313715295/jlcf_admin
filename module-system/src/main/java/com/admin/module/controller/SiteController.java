@@ -38,13 +38,7 @@ import javax.servlet.http.HttpServletRequest;
 public class SiteController extends ShiroController{
 
 
-    @Autowired
-    @Qualifier("qiniuService")
-    private UploadService qiniuService;
 
-    @Autowired
-    @Qualifier("ossService")
-    private UploadService ossService;
 
     @RequiresPermissions("sys:site:list")
     @GetMapping("show")
@@ -57,67 +51,6 @@ public class SiteController extends ShiroController{
         return "admin/system/site/show";
     }
 
-    @RequiresPermissions("sys:site:list")
-    @GetMapping("oss")
-    public String oss(Model model){
-        UploadInfo uploadInfo = uploadInfoService.getOneInfo();
-        model.addAttribute("info",uploadInfo);
-        return "admin/system/site/oss";
-    }
-
-//    @RequiresPermissions("sys:site:editOss")
-//    @PostMapping("editOss")
-//    @ResponseBody
-//    @Transactional
-//    public RestResponse editOss(UploadInfo uploadInfo, HttpServletRequest httpServletRequest){
-//        Site site = (Site)httpServletRequest.getAttribute("site");
-//        if(site == null){
-//            return RestResponse.failure("加载信息错误");
-//        }
-//        if(null == uploadInfo.getId() || 0 == uploadInfo.getId()){
-//            return RestResponse.failure("ID不能为空");
-//        }
-//        if(!ossService.testAccess(uploadInfo)){
-//            return RestResponse.failure("阿里云上传测试检测失败");
-//        }
-//        UploadInfo oldInfo = uploadInfoService.getById(uploadInfo.getId());
-//        uploadInfo.setQiniuDir(oldInfo.getQiniuDir());
-//        uploadInfoService.updateInfo(uploadInfo);
-//        site.setFileUploadType("oss");
-//        siteService.updateSite(site);
-//        return RestResponse.success();
-//    }
-//
-//    @RequiresPermissions("sys:site:list")
-//    @GetMapping("qiniu")
-//    public String qiniu(Model model){
-//        UploadInfo uploadInfo = uploadInfoService.getOneInfo();
-//        model.addAttribute("info",uploadInfo);
-//        return "admin/system/site/qiniu";
-//    }
-
-//    @RequiresPermissions("sys:site:editQiniu")
-//    @PostMapping("editQiniu")
-//    @ResponseBody
-//    @Transactional
-//    public RestResponse editQiniu(UploadInfo uploadInfo,HttpServletRequest httpServletRequest){
-//        Site site = (Site)httpServletRequest.getAttribute("site");
-//        if(site == null){
-//            return RestResponse.failure("加载信息错误");
-//        }
-//        if(null == uploadInfo.getId() || 0 == uploadInfo.getId()){
-//            return RestResponse.failure("ID不能为空");
-//        }
-//        if(!qiniuService.testAccess(uploadInfo)){
-//            return RestResponse.failure("七牛上传测试检测失败");
-//        }
-//        UploadInfo oldInfo = uploadInfoService.getById(uploadInfo.getId());
-//        uploadInfo.setOssDir(oldInfo.getOssDir());
-//        uploadInfoService.updateInfo(uploadInfo);
-//        site.setFileUploadType("qiniu");
-//        siteService.updateSite(site);
-//        return RestResponse.success();
-//    }
 
     @RequiresPermissions("sys:site:edit")
     @PostMapping("edit")
@@ -136,22 +69,6 @@ public class SiteController extends ShiroController{
         if(StringUtils.isNotBlank(site.getRemarks())){
             site.setRemarks(site.getRemarks().replace("\"", "\'"));
         }
-//        if("oss".equals(site.getFileUploadType())){
-//            UploadInfo uploadInfo = uploadInfoService.getOneInfo();
-//            if(StringUtils.isBlank(uploadInfo.getOssKeySecret()) ||
-//               StringUtils.isBlank(uploadInfo.getOssKeyId()) ||
-//               StringUtils.isBlank(uploadInfo.getOssEndpoint())){
-//                return RestResponse.failure("阿里云存储信息不能为空");
-//            }
-//        }
-//        if("qiniu".equals(site.getFileUploadType())){
-//            UploadInfo uploadInfo = uploadInfoService.getOneInfo();
-//            if(StringUtils.isBlank(uploadInfo.getQiniuAccessKey()) ||
-//                    StringUtils.isBlank(uploadInfo.getQiniuSecretKey()) ||
-//                    StringUtils.isBlank(uploadInfo.getQiniuBucketName())){
-//                return RestResponse.failure("七牛云存储信息不能为空");
-//            }
-//        }
         siteService.updateSite(site);
         return RestResponse.success();
     }

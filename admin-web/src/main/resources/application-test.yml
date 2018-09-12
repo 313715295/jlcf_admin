@@ -84,3 +84,9 @@ source-code-zipfile:  D:/gits/mysiteforme/源码.rar
 #本地路径
 lucence-dic:  D:/gits/mysiteforme/lucence
 
+#图片存放路径
+upload:
+  dir:
+    image: D:/gits/jlcf_admin/admin-web/src/main/resources/static/upload/
+  storage:
+    image: /static/upload/

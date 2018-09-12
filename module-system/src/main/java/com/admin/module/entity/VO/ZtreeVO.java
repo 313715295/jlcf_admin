@@ -1,8 +1,5 @@
 package com.admin.module.entity.VO;
 
-import lombok.Data;
-import lombok.experimental.Accessors;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -11,8 +8,6 @@ import java.util.List;
  * @author Administrator
  *
  */
-@Data
-@Accessors(chain = true)
 public class ZtreeVO implements Serializable{
 
 	private Long id;
@@ -30,6 +25,70 @@ public class ZtreeVO implements Serializable{
 	private String icon;
 	
 	private List<ZtreeVO> children;
+	
 
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
+	public Boolean getOpen() {
+		return open;
+	}
+
+	public void setOpen(Boolean open) {
+		this.open = open;
+	}
+	
+	public Boolean getIsParent() {
+		return isParent;
+	}
+
+	public void setIsParent(Boolean isParent) {
+		this.isParent = isParent;
+	}
+
+	public List<ZtreeVO> getChildren() {
+		return children;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+
+	public void setChildren(List<ZtreeVO> children) {
+		this.children = children;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getPid() {
+		return pid;
+	}
+
+	public void setPid(Long pid) {
+		this.pid = pid;
+	}
 }

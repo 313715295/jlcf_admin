@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>base-admin</artifactId>
+        <artifactId>jlcf-admin</artifactId>
         <groupId>com.admin</groupId>
         <version>1.0.0</version>
     </parent>

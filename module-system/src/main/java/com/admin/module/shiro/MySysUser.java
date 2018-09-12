@@ -1,6 +1,8 @@
 package com.admin.module.shiro;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.Subject;
 
 /**
  * Created by wangl on 2017/11/25.
@@ -27,6 +29,8 @@ public class MySysUser {
     }
 
     public static MyRealm.ShiroUser ShiroUser() {
-        return (MyRealm.ShiroUser) SecurityUtils.getSubject().getPrincipal();
+        Subject subject = SecurityUtils.getSubject();
+        MyRealm.ShiroUser shiroUser = (MyRealm.ShiroUser) subject.getPrincipal();
+        return shiroUser;
     }
 }

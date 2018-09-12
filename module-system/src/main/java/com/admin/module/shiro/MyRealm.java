@@ -4,8 +4,8 @@ import com.admin.module.entity.Menu;
 import com.admin.module.entity.Role;
 import com.admin.module.entity.User;
 import com.admin.module.service.UserService;
-import com.admin.module.utils.Constants;
-import com.admin.module.utils.Encodes;
+import com.admin.commons.utils.Constants;
+import com.admin.commons.utils.Encodes;
 import com.google.common.collect.Sets;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -22,7 +22,6 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 

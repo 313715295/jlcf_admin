@@ -5,7 +5,7 @@ package com.admin.commons.enums;
  */
 public enum ResponseEnum {
 
-    SUCCESS(200," 请求正确"),
+    SUCCESS(200,"请求正确"),
     ERROR(400,"请求不正确"),
     PAY_ERROR_CODE(405,"支付失败"),
     FAIL_CODE(500,"禁止访问"),

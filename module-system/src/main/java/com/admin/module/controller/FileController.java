@@ -5,7 +5,6 @@ import com.admin.commons.annotation.SysLog;
 import com.admin.module.entity.Site;
 import com.admin.module.entity.VO.SiteVO;
 import com.admin.module.service.UploadService;
-import com.admin.module.utils.QiniuFileUtil;
 import com.admin.commons.utils.RestResponse;
 import com.admin.module.utils.ToolUtil;
 import com.google.common.collect.Lists;
@@ -51,14 +50,6 @@ public class FileController {
     private String localUploadPath;
 
     @Autowired
-    @Qualifier("qiniuService")
-    private UploadService qiniuService;
-
-    @Autowired
-    @Qualifier("ossService")
-    private UploadService ossService;
-
-    @Autowired
     @Qualifier("localService")
     private UploadService localService;
 
@@ -95,20 +86,7 @@ public class FileController {
         return RestResponse.success().setData(m);
     }
 
-    @PostMapping("uploadBase64")
-    @ResponseBody
-    @SysLog("base64格式文件上传")
-    public RestResponse uploadBase64(@RequestParam(value = "file",required = false) String file,
-                                     @RequestParam(value = "name",required= false)String name){
-        if(StringUtils.isBlank(file)){
-            return RestResponse.failure("图片不能为空");
-        }
-        if(StringUtils.isBlank(name)){
-            return RestResponse.failure("图片名称不能为空");
-        }
-        String url = QiniuFileUtil.uploadBase64(file,name);
-        return RestResponse.success().setData(url);
-    }
+
 
     /**
      * wangEditor批量上传图片
