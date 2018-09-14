@@ -26,7 +26,7 @@ public abstract class DataEntity<T extends BaseEntity> extends BaseDataEntity<T>
     private static final long serialVersionUID = 1L;
 
     /**
-     * 创建着
+     * 创建者
      */
     @TableField(exist = false)
     protected User createUser;

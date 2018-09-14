@@ -123,7 +123,7 @@
     </div>
     <!-- 底部 -->
     <div class="layui-footer footer">
-        <p>Copyright © 2018孤独的旅行家  Design By 马哥 <a href="http://www.miibeian.gov.cn" target="_blank">苏ICP备17063650号 </a></p>
+        <p>Copyright © 金鲤财富 <a href="http://www.miibeian.gov.cn" target="_blank">苏ICP备17063650号 </a></p>
     </div>
 </div>
 <script>

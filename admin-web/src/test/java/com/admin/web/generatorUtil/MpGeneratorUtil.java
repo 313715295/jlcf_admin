@@ -46,7 +46,7 @@ public class MpGeneratorUtil {
     private String applicationName;
 
     @Test
-    public  void generator() {
+    public void generator() {
 
         /*
         如 每张表都有一个创建时间、修改时间
@@ -58,18 +58,19 @@ public class MpGeneratorUtil {
         或者采用继承实体父类，父类里设置公共字段，然后mybatisPlus公共字段填充
          */
         // 自定义需要填充的字段
-        List<TableFill> sysFillList = new ArrayList<>();
-        TableFill sysField = new TableFill("name", FieldFill.INSERT);
-        sysFillList.add(sysField);
-
-        List<TableFill> serviceFillList = new ArrayList<>();
-        TableFill serviceField = new TableFill("city_name", FieldFill.INSERT_UPDATE);
-        serviceFillList.add(serviceField);
+//        List<TableFill> sysFillList = new ArrayList<>();
+//        TableFill sysField = new TableFill("name", FieldFill.INSERT);
+//        sysFillList.add(sysField);
+//
+//        List<TableFill> serviceFillList = new ArrayList<>();
+//        TableFill serviceField = new TableFill("city_name", FieldFill.INSERT_UPDATE);
+//        serviceFillList.add(serviceField);
 
         //需要生成的表名
 //        String[] systemTables = {"user","order_"};
         String[] systemTables = {"user"};
-        String[] serviceTables = {"city"};
+        String[] serviceTables = {"system_dict"};
+
 
         ModuleGeneratorTemplate systemTemplate = new ModuleGeneratorTemplate();
         ModuleGeneratorTemplate serviceTemplate = new ModuleGeneratorTemplate();
@@ -80,8 +81,9 @@ public class MpGeneratorUtil {
                 .setDbType(dbType)
                 .setUserName(sysUserName)
                 .setPassword(sysPassword)
-                .setTableFills(sysFillList)
-                .setTables(systemTables);
+//                .setTableFills(sysFillList)
+//                .setTables(systemTables)
+        ;
 
         serviceTemplate.setModuleName("module-service")
                 .setDriverName(serviceDriverName)
@@ -89,11 +91,11 @@ public class MpGeneratorUtil {
                 .setDbType(dbType)
                 .setUserName(serviceUserName)
                 .setPassword(servicePassword)
-                .setTableFills(serviceFillList)
+//                .setTableFills(serviceFillList)
                 .setTables(serviceTables);
 
-        ModuleGeneratorTemplate[] templates = {systemTemplate,serviceTemplate};
-//        ModuleGeneratorTemplate[] templates = {systemTemplate};
+//        ModuleGeneratorTemplate[] templates = {systemTemplate,serviceTemplate};
+        ModuleGeneratorTemplate[] templates = {serviceTemplate};
 
 //        generatorModules(templates);
 
@@ -101,15 +103,15 @@ public class MpGeneratorUtil {
 
 
     private static void generatorModules(ModuleGeneratorTemplate[] templates) {
-        for (ModuleGeneratorTemplate template:templates) {
-            generatorTamplate(template,"zwq",false);
+        for (ModuleGeneratorTemplate template : templates) {
+            generatorTamplate(template, "zwq", false);
 
         }
     }
 
     private static void generatorTamplate(ModuleGeneratorTemplate moduleGeneratorTemplate, String author, boolean serviceStartWithI) {
 //      全局配置
-        File file = new File("../"+moduleGeneratorTemplate.getModuleName());
+        File file = new File("../" + moduleGeneratorTemplate.getModuleName());
         GlobalConfig gc = new GlobalConfig();
         //测试下运行获取的路径是模块下的位置，所以需要加../
         gc.setOutputDir(file.getAbsolutePath() + "/src/main/java")
@@ -121,7 +123,7 @@ public class MpGeneratorUtil {
                 // .setKotlin(true) 是否生成 kotlin 代码
                 .setAuthor(author);
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
-        // gc.setMapperName("%sDao");
+         gc.setMapperName("%sDao");
         // gc.setXmlName("%sDao");
         if (!serviceStartWithI) {
             gc.setServiceName("%sService"); //默认是I**Service
@@ -156,11 +158,11 @@ public class MpGeneratorUtil {
                 .setInclude(moduleGeneratorTemplate.getTables()) // 需要生成的表 多个表名传入数组
 //                .setExclude(new String[]{"test"}) // 排除生成的表
 //              自定义实体父类
-                .setSuperEntityClass("com.admin.commons.base.BaseEntity")  //只是继承这个类，并不会自动创建实体父类，
+//                .setSuperEntityClass("com.admin.commons.base.BaseEntity")  //只是继承这个类，并不会自动创建实体父类，
 //              自定义实体，公共字段  原定方案是公共字段放父类实体，然后父类实体设定字段填充方案，因使用AR需要继承model，
 //              然后自动生成的时候pkVal方法需要重新导入（继承冲突导包失败），所以不自定义父类，采用设定填充表字段
 //                .setTableFillList(moduleGeneratorTemplate.getTableFills())
-                .setSuperEntityColumns("test_id", "age")  //默认实体父类有这些字段，工具生成的实体忽略这些公共字段
+//                .setSuperEntityColumns("test_id", "age")  //默认实体父类有这些字段，工具生成的实体忽略这些公共字段
 //              自定义 dao 父类
                 .setSuperMapperClass("com.admin.commons.base.BaseDao")
 //              自定义 service 父类
@@ -173,7 +175,7 @@ public class MpGeneratorUtil {
 //              public static final String ID = "test_id";
 //                .setEntityColumnConstant(true)
 //              【实体】是否为构建者模型（默认 false）
-//              public User setName(String name) {this.name = name; return this;}
+//              public IUser setName(String name) {this.name = name; return this;}
                 .setEntityBuilderModel(true)
 //              Boolean类型字段是否移除is前缀处理
 //              .setEntityBooleanColumnRemoveIsPrefix(true)

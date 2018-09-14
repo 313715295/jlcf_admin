@@ -34,7 +34,7 @@
 <body>
 <div id="bg-body"></div>
 <div class="login">
-    <h1>孤独的旅行家</h1>
+    <h1>金鲤财富</h1>
     <form class="layui-form" action="${base}/login/main" method="post">
         <div class="layui-form-item">
             <input class="layui-input" name="username" placeholder="用户名" lay-verify="required" type="text" autocomplete="off">
@@ -52,9 +52,7 @@
         <button class="layui-btn login_btn" lay-submit="" lay-filter="login">登录</button>
     </form>
 </div>
-<div class="loginTip">
-    <span>用户名:admin &nbsp;&nbsp;&nbsp;密码:123456</span>
-</div>
+
 <script type="text/javascript" src="${base}/static/layui/layui.js"></script>
 <script type="text/javascript" src="${base}/static/js/jquery.min.js"></script>
 <script type="text/javascript" src="${base}/static/js/jquery.bcat.bgswitcher.js"></script>
@@ -65,13 +63,13 @@
                 form = layui.form;
 
         $(document).ready(function() {
-            var srcBgArray = ["https://static.mysiteforme.com/chun.jpg",
-                "https://static.mysiteforme.com/xia.jpg",
-                "https://static.mysiteforme.com/qiu.jpg",
-                "https://static.mysiteforme.com/dong.jpg"];
+            var srcBgArray = ["/static/images/login/login_1.png",
+                "/static/images/login/login_2.png",
+                "/static/images/login/login_3.png"];
             $('#bg-body').bcatBGSwitcher({
                 timeout:5000,
                 urls: srcBgArray,
+                speed: 1,
                 alt: 'Full screen background image'
             });
         });
